@@ -1,11 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import {
+  UIManager,
+  LayoutAnimation,
+  Platform,
+  StyleSheet,
+  View
+} from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
 
 import Navigator from './components/Navigator';
@@ -13,6 +13,8 @@ import Map from './screens/Map/Map';
 import Giveaways from './screens/Giveaways';
 import Information from './screens/Information';
 
+// Enable animations
+UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
 // Material UI theme (only needs to be set here - will be propagated to the app)
 const uiTheme = {
@@ -26,12 +28,12 @@ const uiTheme = {
   },
 };
 
+// Main style
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   }
 });
-
 
 /**
  * Main component
@@ -40,25 +42,35 @@ export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      currentScreen: 'map'
+      currentScreen: 'map',
+      currentModal:  null
     };
     this.selectScreen = this.selectScreen.bind(this);
+    this.showModal    = this.showModal.bind(this);
   }
 
   selectScreen (screen) {
-    this.setState({ currentScreen: screen });
+    this.setState({ currentScreen: screen, currentModal: null });
+  }
+
+  showModal (modal) {
+    this.setState({ currentModal: modal });
   }
 
   renderScreen () {
+    const modal = {
+      current: this.state.currentModal,
+      show:    this.showModal
+    };
     switch (this.state.currentScreen) {
       case 'map':
-        return (<Map />);
+        return (<Map modal={modal} />);
 
       case 'giveaways':
-        return (<Giveaways />);
+        return (<Giveaways modal={modal} />);
 
       case 'information':
-        return (<Information />);
+        return (<Information modal={modal} />);
     }
   }
 

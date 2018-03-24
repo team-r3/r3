@@ -29,10 +29,13 @@ export default class MainContainer extends Component {
         <View style={styles.main}>
           {this.props.children}
         </View>
-        {this.props.onActionButton
-          ? <ActionButton onPress={this.props.onActionButton} />
-          : null
-        }
+        {this.props.actionButton ? (
+          <ActionButton
+            onPress={this.props.actionButton.onPress||null}
+            actions={this.props.actionButton.actions||null}
+            transition={this.props.actionButton.transition||'speedDial'}
+          />
+        ) : null}
       </View>
     );
   }
