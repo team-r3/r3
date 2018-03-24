@@ -1,4 +1,4 @@
-package com.r3project;
+package com.r3;
 
 import android.app.Application;
 

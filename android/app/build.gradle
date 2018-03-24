@@ -98,7 +98,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.r3project"
+        applicationId "com.r3"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
