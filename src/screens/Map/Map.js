@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { Subheader } from 'react-native-material-ui';
 import MapView from 'react-native-maps';
 
 import MainContainer from '../../components/MainContainer';
-
+import mapSpots from './spots.json';
 
 /**
  * Map screen component
@@ -23,21 +23,54 @@ export default class Map extends Component {
           }}
         >
           
-          <MapView.Marker
-            coordinate={{
-              latitude: 37.015589,
-              longitude: -7.933262
-            }}
-            title={'Ecoponto'}
-            description={'Large aqui vidro, plástico ou papel'}
-          />
-        
+          {mapSpots.map((spot,index) => {
+            let title, description, imageSource;
+            switch(spot.type){
+              case "eco":
+                title="Recycle center";
+                description="Available <br>Paper, Plastic, Glass";
+                imageSource=require("./img/map-pin-eco.png");
+                break;
+              case "battery":
+                title="Battery";
+                description="Battery drop point";
+                imageSource=require("./img/map-pin-battery.png");
+                break;
+              case "oil":
+                title="Oil waste";
+                description="Oil drop point";
+                imageSource=require("./img/map-pin-oil.png");
+                break;
+            } 
+            return(
+              <MapView.Marker
+                coordinate={{
+                  latitude: spot.latitude,
+                  longitude: spot.longitude
+                }}
+                title={title}
+                description={description}
+                key={spot.key}
+              >
+                <Image
+                  style={{width: 40, height: 40}}
+                  source={imageSource}
+                />
+              </MapView.Marker>
+            );
+          })}
 
+
+
+
+            
+          
         </MapView>
       </MainContainer>
     );
   }
 }
+
 
 
 const styleMap = StyleSheet.create({

@@ -1,0 +1,64 @@
+[
+  {
+    "key":  0,
+    "type": "eco",
+    "latitude": 37.015589,
+    "longitude": -7.933262
+  },
+  {
+    "key":  1,
+    "type": "eco",
+    "latitude": 37.014296,
+    "longitude": -7.934743
+  },
+  {
+    "key":  2,
+    "type": "eco",
+    "latitude": 37.017585,
+    "longitude": -7.926932
+  },
+  {
+    "key":  3,
+    "type": "eco",
+    "latitude": 37.020464,
+    "longitude": -7.937103
+  },
+  {
+    "key":  4,
+    "type": "eco",
+    "latitude": 37.023479,
+    "longitude": -7.932468
+  },
+  {
+    "key":  5,
+    "type": "battery",
+    "latitude": 37.018939,
+    "longitude": -7.935515
+  },
+  {
+    "key":  6,
+    "type": "battery",
+    "latitude": 37.016061,
+    "longitude": -7.928606
+  },
+  {
+    "key":  7,
+    "type": "battery",
+    "latitude": 37.025175,
+    "longitude": -7.934721
+  },
+  {
+    "key":  8,
+    "type": "oil",
+    "latitude": 37.016746,
+    "longitude": -7.936416
+  },
+  {
+    "key":  9,
+    "type": "oil",
+    "latitude": 37.022108,
+    "longitude": -7.928241
+  }
+
+]
+
