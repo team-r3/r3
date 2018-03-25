@@ -12,6 +12,7 @@ import Navigator from './components/Navigator';
 import Map from './screens/Map/Map';
 import Giveaways from './screens/Giveaways';
 import Information from './screens/Information';
+import giveawayPosts from './screens/Giveaways/posts';
 
 // Enable animations
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -20,6 +21,7 @@ UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationE
 const uiTheme = {
   palette: {
       primaryColor: COLOR.lightGreen600,
+      accentColor: COLOR.blue500,
   },
   toolbar: {
       container: {
@@ -43,7 +45,8 @@ export default class App extends Component {
     super(props)
     this.state = {
       currentScreen: 'map',
-      currentModal:  null
+      currentModal:  null,
+      giveawayPosts: giveawayPosts
     };
     this.selectScreen = this.selectScreen.bind(this);
     this.showModal    = this.showModal.bind(this);
@@ -67,7 +70,7 @@ export default class App extends Component {
         return (<Map modal={modal} />);
 
       case 'giveaways':
-        return (<Giveaways modal={modal} />);
+        return (<Giveaways modal={modal} posts={this.state.giveawayPosts}/>);
 
       case 'information':
         return (<Information modal={modal} />);

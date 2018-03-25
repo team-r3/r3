@@ -1,0 +1,32 @@
+[
+  {
+    "key":  0,
+    "type": "request",
+    "user": "José Lopes da Silva",
+    "text": "Aceito paletes de madeira."
+  },
+  {
+    "key":  1,
+    "type": "give",
+    "user": "Ana Lopes da Silva",
+    "text": "Lâmpadas fundidas para dar."
+  },
+  {
+    "key":  2,
+    "type": "request",
+    "user": "António Meireles",
+    "text": "Procuro recipientes de vidro, com 0.5L a 1L de tamanho."
+  },
+  {
+    "key":  3,
+    "type": "request",
+    "user": "Marisa Meireles",
+    "text": "Procuro móveis antigos."
+  },
+  {
+    "key":  4,
+    "type": "give",
+    "user": "João Fonseca",
+    "text": "30 caixas de CDs virgens para doar."
+  }
+]

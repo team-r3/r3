@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Subheader } from 'react-native-material-ui';
+import { ScrollView, View, TextInput, Text } from 'react-native';
+import { ListItem, Subheader } from 'react-native-material-ui';
 
 import MainContainer from '../../components/MainContainer';
 import Modal from '../../components/Modal';
@@ -13,23 +13,51 @@ export default class Giveaways extends Component {
     console.log('aaaa');
   }
 
+  renderModal() {
+    switch (this.props.modal.current) {
+      case 'request':
+      case 'give':
+        const request  = (this.props.modal.current == 'request');
+        const validate = () => {
+          return true;
+        }
+        return (    
+          <Modal title={request ? 'Request' : 'Give away'} modal={this.props.modal} validate={validate}>
+            <TextInput
+              style={{height: 40}}
+              placeholder="Insert your name"
+              // onChangeText={(text) => this.setState({text})}
+            />
+            <TextInput
+              style={{height: 40}}
+              placeholder={request ? "Describe what you are requesting" : "Describe what you're giving away"}
+              // onChangeText={(text) => this.setState({text})}
+            />
+          </Modal>
+        );
+
+      default:
+        return null;
+    }
+  }
+
   render() {
     const actionButtonSettings = {
       actions: [
         {
-          icon: 'info',
+          icon:  'insert-emoticon',
           label: 'Give away',
-          name: 'give'
+          name:  'give'
         },
         {
-          icon: 'info',
-          label: 'Ask for',
-          name: 'ask'
+          icon:  'chat-bubble',
+          label: 'Make a request',
+          name:  'request'
         }
       ],
       onPress: (action) => {
         switch (action) {
-          case 'ask':
+          case 'request':
           case 'give':
             this.props.modal.show(action);
             break;
@@ -38,13 +66,25 @@ export default class Giveaways extends Component {
     };
     return (
       <MainContainer title='Give away' actionButton={actionButtonSettings}>
-        <Subheader text="Subheader text" />
-        <Text>Give-receive used stuff...</Text>
-        {(this.props.modal.current) ? (
-          <Modal title="cenas" modal={this.props.modal}>
-            <Text>current: {this.props.modal.current}</Text>
-          </Modal>
-        ) : null}
+        {this.renderModal()}
+        <ScrollView>
+          {this.props.posts.map((post, index) => {
+            return (
+              <ListItem
+                divider
+                leftElement={post.type == 'request' ? 'chat-bubble' : 'insert-emoticon'}
+                centerElement={{
+                    primaryText:   post.user,
+                    secondaryText: post.text,
+                }}
+                key={post.key}
+                onPress={() => {}}
+                onPressValue={post.key}
+                numberOfLines={'dynamic'}
+              />
+            );
+          })}
+        </ScrollView>
       </MainContainer>
     );
   }

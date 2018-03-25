@@ -3,7 +3,6 @@ import { View, Text } from 'react-native';
 import { Dialog, DialogDefaultActions } from 'react-native-material-ui';
 
 export default class Modal extends Component {
-
   render() {
     return (
       <View>

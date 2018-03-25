@@ -16,7 +16,7 @@ export default class Navigator extends Component {
         />
         <BottomNavigation.Action
           key="giveaways"
-          icon="people"
+          icon="view-list"
           label="Give away"
           onPress={() => this.props.navigate('giveaways')}
         />
