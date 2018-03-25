@@ -12,14 +12,14 @@ import mapSpots from './spots.json';
 export default class Map extends Component {
   render() {
     return (
-      <MainContainer title='Map'>
+      <MainContainer title='Recycling spots'>
 
         <MapView style={styleMap.map}
           region={{
             latitude: 37.015589,
             longitude: -7.933262,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05
+            latitudeDelta: 0.03,
+            longitudeDelta: 0.03
           }}
         >
           
@@ -28,7 +28,7 @@ export default class Map extends Component {
             switch(spot.type){
               case "eco":
                 title="Recycle center";
-                description="Available <br>Paper, Plastic, Glass";
+                description="Available: Paper, Plastic, Glass";
                 imageSource=require("./img/map-pin-eco.png");
                 break;
               case "battery":

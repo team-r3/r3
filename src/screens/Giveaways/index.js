@@ -65,7 +65,7 @@ export default class Giveaways extends Component {
       }
     };
     return (
-      <MainContainer title='Give away' actionButton={actionButtonSettings} modal={this.getModal()}>
+      <MainContainer title='Community' actionButton={actionButtonSettings} modal={this.getModal()}>
         <ScrollView>
           {this.props.posts.map((post, index) => {
             return (
