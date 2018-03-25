@@ -1,32 +1,38 @@
 [
   {
-    "key":  0,
+    "key" :  0,
     "type": "request",
     "user": "José Lopes da Silva",
-    "text": "Aceito paletes de madeira."
+    "text": "Looking for wood pallets"
   },
   {
-    "key":  1,
+    "key" :  1,
     "type": "give",
-    "user": "Ana Lopes da Silva",
-    "text": "Lâmpadas fundidas para dar."
+    "user": "Ana Fonseca",
+    "text": "Old desktop computer that i don't use anymore. I'm giving it for someone that make use of it, or social institution."
   },
   {
-    "key":  2,
+    "key" :  2,
     "type": "request",
     "user": "António Meireles",
-    "text": "Procuro recipientes de vidro, com 0.5L a 1L de tamanho."
+    "text": "I'm looking for glass containers, 0.5L to 1L in size."
   },
   {
-    "key":  3,
+    "key" :  3,
     "type": "request",
-    "user": "Marisa Meireles",
-    "text": "Procuro móveis antigos."
+    "user": "Mary Jane",
+    "text": "Looking for old bedroom furniture to use during 2 months."
   },
   {
-    "key":  4,
+    "key" :  4,
     "type": "give",
-    "user": "João Fonseca",
-    "text": "30 caixas de CDs virgens para doar."
+    "user": "João Gonçalves",
+    "text": "10 boxes of old VHS tapes to donate. Good for plastic artist."
+  },
+  {
+    "key" :  5,
+    "type": "request",
+    "user": "Carlos Nascimento",
+    "text": "Looking for used bycicle tires."
   }
 ]
