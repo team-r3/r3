@@ -10,14 +10,14 @@ export default class Navigator extends Component {
       <BottomNavigation active={this.props.current} hidden={false} >
         <BottomNavigation.Action
           key="map"
-          icon="map"
-          label="Map"
+          icon="place"
+          label="Recycling spots"
           onPress={() => this.props.navigate('map')}
         />
         <BottomNavigation.Action
           key="giveaways"
           icon="view-list"
-          label="Give away"
+          label="Community"
           onPress={() => this.props.navigate('giveaways')}
         />
         <BottomNavigation.Action

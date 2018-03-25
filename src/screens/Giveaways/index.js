@@ -13,7 +13,7 @@ export default class Giveaways extends Component {
     console.log('aaaa');
   }
 
-  renderModal() {
+  getModal() {
     switch (this.props.modal.current) {
       case 'request':
       case 'give':
@@ -65,8 +65,7 @@ export default class Giveaways extends Component {
       }
     };
     return (
-      <MainContainer title='Give away' actionButton={actionButtonSettings}>
-        {this.renderModal()}
+      <MainContainer title='Give away' actionButton={actionButtonSettings} modal={this.getModal()}>
         <ScrollView>
           {this.props.posts.map((post, index) => {
             return (

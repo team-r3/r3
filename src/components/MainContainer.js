@@ -18,6 +18,7 @@ export default class MainContainer extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.props.modal||null}
         <Toolbar
           leftElement="menu"
           centerElement={this.props.title}
