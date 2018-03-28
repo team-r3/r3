@@ -12,7 +12,7 @@ import Navigator from './components/Navigator';
 import Map from './screens/Map/Map';
 import Giveaways from './screens/Giveaways';
 import Information from './screens/Information';
-import giveawayPosts from './screens/Giveaways/posts';
+import communityPosts from './screens/Giveaways/posts';
 
 // Enable animations
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -42,47 +42,57 @@ const styles = StyleSheet.create({
  */
 export default class App extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
-      currentScreen: 'map',
-      currentModal:  null,
-      giveawayPosts: giveawayPosts
+      screen: 'map',
+      modal:  null,
+      search: '',
+      communityPosts: communityPosts
     };
-    this.selectScreen = this.selectScreen.bind(this);
-    this.showModal    = this.showModal.bind(this);
-  }
 
-  selectScreen (screen) {
-    this.setState({ currentScreen: screen, currentModal: null });
-  }
-
-  showModal (modal) {
-    this.setState({ currentModal: modal });
-  }
-
-  renderScreen () {
-    const modal = {
-      current: this.state.currentModal,
-      show:    this.showModal
-    };
-    switch (this.state.currentScreen) {
-      case 'map':
-        return (<Map modal={modal} />);
-
-      case 'giveaways':
-        return (<Giveaways modal={modal} posts={this.state.giveawayPosts}/>);
-
-      case 'information':
-        return (<Information modal={modal} />);
+    // State control object
+    this.controler = {
+      selectScreen: (screen) => { this.setState({
+        screen: screen,
+        modal:  null,
+        search: ''
+      }); },
+      showModal:         (modal) => { this.setState({ modal: modal }); },
+      updateSearch:      (text) => { this.setState({ search: text }); },
+      getCommunityPosts: () => { return this.state.communityPosts; },
+      getModal:          () => { return this.state.modal; },
+      getSearch:         () => { return this.state.search; }
     }
   }
 
+  /**
+   * Screen routing
+   */
+  renderScreen () {
+    switch (this.state.screen) {
+      case 'map':
+        return (<Map controler={this.controler} />);
+
+      case 'giveaways':
+        return (<Giveaways controler={this.controler}/>);
+
+      case 'information':
+        return (<Information controler={this.controler} />);
+    }
+  }
+
+  /**
+   * Root component
+   */
   render() {
     return (
       <ThemeProvider uiTheme={uiTheme}>
         <View style={styles.container}>
           {this.renderScreen()}
-          <Navigator current={this.state.currentScreen} navigate={this.selectScreen} />
+          <Navigator
+            current={this.state.screen}
+            navigate={this.controler.selectScreen}
+          />
         </View>
       </ThemeProvider>
     );

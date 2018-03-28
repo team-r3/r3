@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { ActionButton, Toolbar } from 'react-native-material-ui';
+import { Toolbar } from 'react-native-material-ui';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 /**
- * Screen chooser component
+ * Main container component
  */
 export default class MainContainer extends Component {
   render() {
@@ -22,21 +22,20 @@ export default class MainContainer extends Component {
         <Toolbar
           leftElement="menu"
           centerElement={this.props.title}
-          searchable={{
-            autoFocus: true,
-            placeholder: 'Search',
-          }}
+          searchable={this.props.search ? {
+            autoFocus:      true,
+            placeholder:    this.props.search,
+            onChangeText:   e => {
+              this.props.controler.updateSearch(e.target.value);
+            },
+            onSearchClosed: e => {
+              this.props.controler.updateSearch('');
+            },
+          } : null}
         />
         <View style={styles.main}>
           {this.props.children}
         </View>
-        {this.props.actionButton ? (
-          <ActionButton
-            onPress={this.props.actionButton.onPress||null}
-            actions={this.props.actionButton.actions||null}
-            transition={this.props.actionButton.transition||'speedDial'}
-          />
-        ) : null}
       </View>
     );
   }

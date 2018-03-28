@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Dialog, DialogDefaultActions } from 'react-native-material-ui';
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 
 export default class Modal extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Dialog>
           <Dialog.Title><Text>{this.props.title}</Text></Dialog.Title>
           <Dialog.Content>
@@ -20,7 +31,7 @@ export default class Modal extends Component {
               options={{ ok: { disabled: true } }}
               onActionPress={(action) => {
                 if (action == 'ok') {
-                  //TODO: do cenas
+                  //TODO: do stuff...
                 }
                 this.props.modal.show(null);
               }}

@@ -12,7 +12,7 @@ import mapSpots from './spots.json';
 export default class Map extends Component {
   render() {
     return (
-      <MainContainer title='Recycling spots'>
+      <MainContainer title='Recycling spots' search='Search' controler={this.props.controler}>
 
         <MapView style={styleMap.map}
           region={{

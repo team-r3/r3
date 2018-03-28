@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 export default class Information extends Component {
   render() {
     return (
-      <MainContainer title='Information'>
+      <MainContainer title='Information' search='Search' controler={this.props.controler}>
         <ScrollView style={styles.container}>
         <Card>
           <Subheader text="Paper" />
