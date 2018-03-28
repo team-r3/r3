@@ -37,6 +37,34 @@ export default class Giveaways extends Component {
     }
   }
 
+  matchPersonName (personName, filter) {
+    const filters = filter.split(' ');
+
+    // All filters are included in the name
+    if (filters.every(filter => { return personName.includes(filter); })) {
+      return true;
+    }
+    // All name parts are referenced in the filter, as initials, plus last name
+    if (filters.length === 1) {
+      return personName.split(' ').every((value, i, nameParts) => {
+        return (i < nameParts.length - 1)
+          ? value[0] === filters[0][i]           // First names' initials
+          : value.includes(filters[0].slice(i)); // Last name must include the remainder of the filter
+      });
+    }
+    return false;
+  }
+
+  getPosts () {
+    const filter = this.props.controler.getSearch().trim().toLowerCase();
+    return this.props.controler.getCommunityPosts().filter((post) => {
+      return (
+        post.text.toLowerCase().includes(filter) ||
+        this.matchPersonName(post.user.toLowerCase(), filter)
+      );
+    });
+  }
+
   /**
    *
    */
@@ -63,31 +91,10 @@ export default class Giveaways extends Component {
       }
     };
 
-    const matchPersonName = (filters, personName) => {
-      // All filters are included in the name
-      if (filters.every(filter => { return personName.includes(filter); })) {
-        return true;
-      }
-      // All name parts are referenced in the filter, as initials, plus last name
-      if (filters.length === 1) {
-        personName.split(' ').every((value, i, nameParts) => {
-          return (i < nameParts.length - 1)
-            ? value[0] === filters[0][i]           // First names' initials
-            : value.includes(filters[0].slice(i)); // Last name must include the remainder of the filter
-        });
-      }
-      return false;
-    }
-
-    const filter = this.props.controler.getSearch().trim();
-    const posts  = this.props.controler.getCommunityPosts().filter((post) => {
-      return post.text.includes(filter) || matchPersonName(filter.split(' '), post.user)
-    });
-
     return (
       <MainContainer title='Community' search='Search' controler={this.props.controler} modal={this.getModal()}>
         <ScrollView>
-          {posts.map((post, index) => {
+          {this.getPosts().map((post, index) => {
             return (
               <ListItem
                 divider
