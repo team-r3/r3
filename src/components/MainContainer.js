@@ -25,8 +25,8 @@ export default class MainContainer extends Component {
           searchable={this.props.search ? {
             autoFocus:      true,
             placeholder:    this.props.search,
-            onChangeText:   text => this.props.controler.updateSearch(text),
-            onSearchClosed: () => this.props.controler.updateSearch('')
+            onChangeText:   text => this.props.controller.updateSearch(text),
+            onSearchClosed: () => this.props.controller.updateSearch('')
           } : null}
         />
         <View style={styles.main}>

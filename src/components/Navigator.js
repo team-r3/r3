@@ -6,25 +6,27 @@ import { BottomNavigation } from 'react-native-material-ui';
  */
 export default class Navigator extends Component {
   render() {
+    const currentIndex = this.props.navigation.state.index;
+    const currentRoute = this.props.navigation.state.routes[currentIndex].routeName;
     return (
-      <BottomNavigation active={this.props.current} hidden={false} >
+      <BottomNavigation active={currentRoute} hidden={false} >
         <BottomNavigation.Action
-          key="map"
+          key="Map"
           icon="place"
           label="Recycling spots"
-          onPress={() => this.props.navigate('map')}
+          onPress={() => this.props.navigation.navigate('Map')}
         />
         <BottomNavigation.Action
-          key="giveaways"
+          key="Community"
           icon="view-list"
           label="Community"
-          onPress={() => this.props.navigate('giveaways')}
+          onPress={() => this.props.navigation.navigate('Community')}
         />
         <BottomNavigation.Action
-          key="information"
+          key="Information"
           icon="info"
           label="Information"
-          onPress={() => this.props.navigate('information')}
+          onPress={() => this.props.navigation.navigate('Information')}
         />
       </BottomNavigation>
     );

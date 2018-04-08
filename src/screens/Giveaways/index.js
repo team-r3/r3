@@ -10,15 +10,20 @@ import Modal from '../../components/Modal';
  */
 export default class Giveaways extends Component {
   getModal() {
-    switch (this.props.controler.getModal()) {
+    const controller = this.props.screenProps.controller;
+    switch (controller.getModal()) {
       case 'request':
       case 'give':
-        const request  = (this.props.controler.getModal() == 'request');
+        const request  = (controller.getModal() == 'request');
         const validate = () => {
           return true;
         }
         return (    
-          <Modal title={request ? 'Request' : 'Give away'} modal={this.props.controler.getModal()} validate={validate}>
+          <Modal
+            title={request ? 'Request' : 'Give away'}
+            modal={controller.getModal()}
+            validate={validate}
+          >
             <TextInput
               style={{height: 40}}
               placeholder="Insert your name"
@@ -56,8 +61,9 @@ export default class Giveaways extends Component {
   }
 
   getPosts () {
-    const filter = this.props.controler.getSearch().trim().toLowerCase();
-    return this.props.controler.getCommunityPosts().filter((post) => {
+    const controller = this.props.screenProps.controller;
+    const filter     = controller.getSearch().trim().toLowerCase();
+    return controller.getCommunityPosts().filter((post) => {
       return (
         post.text.toLowerCase().includes(filter) ||
         this.matchPersonName(post.user.toLowerCase(), filter)
@@ -69,6 +75,8 @@ export default class Giveaways extends Component {
    *
    */
   render() {
+    const controller = this.props.screenProps.controller;
+
     const actions = [
       {
         name:  'give',
@@ -86,13 +94,18 @@ export default class Giveaways extends Component {
       switch (action) {
         case 'request':
         case 'give':
-          this.props.controler.showModal(action);
+        controller.showModal(action);
           break;
       }
     };
 
     return (
-      <MainContainer title='Community' search='Search' controler={this.props.controler} modal={this.getModal()}>
+      <MainContainer
+        title='Community'
+        search='Search'
+        controller={controller}
+        modal={this.getModal()}
+      >
         <ScrollView>
           {this.getPosts().map((post, index) => {
             return (

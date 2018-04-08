@@ -7,6 +7,7 @@ import {
   View
 } from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
+import { TabNavigator } from 'react-navigation';
 
 import Navigator from './components/Navigator';
 import Map from './screens/Map/Map';
@@ -20,13 +21,13 @@ UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationE
 // Material UI theme (only needs to be set here - will be propagated to the app)
 const uiTheme = {
   palette: {
-      primaryColor: COLOR.lightGreen600,
-      accentColor: COLOR.blue500,
+    primaryColor: COLOR.lightGreen600,
+    accentColor: COLOR.blue500,
   },
   toolbar: {
-      container: {
-          height: 50,
-      },
+    container: {
+      height: 50,
+    },
   },
 };
 
@@ -38,46 +39,42 @@ const styles = StyleSheet.create({
 });
 
 /**
+ * Navigation component
+ */
+const MainNavigation = TabNavigator({
+  Map:         { screen: Map },
+  Community:   { screen: Giveaways },
+  Information: { screen: Information },
+}, {
+  tabBarPosition:  'bottom',
+  tabBarComponent: props => {
+    return (
+      <ThemeProvider uiTheme={uiTheme}>
+        <Navigator navigation={props.navigation}/>
+      </ThemeProvider>
+    );
+  }
+});
+
+/**
  * Main component
  */
 export default class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      screen: 'map',
       modal:  null,
       search: '',
       communityPosts: communityPosts
     };
 
     // State control object
-    this.controler = {
-      selectScreen: (screen) => { this.setState({
-        screen: screen,
-        modal:  null,
-        search: ''
-      }); },
+    this.controller = {
       showModal:         (modal) => { this.setState({ modal: modal }); },
       updateSearch:      (text) => { this.setState({ search: text }); },
       getCommunityPosts: () => { return this.state.communityPosts; },
       getModal:          () => { return this.state.modal; },
       getSearch:         () => { return this.state.search; }
-    }
-  }
-
-  /**
-   * Screen routing
-   */
-  renderScreen () {
-    switch (this.state.screen) {
-      case 'map':
-        return (<Map controler={this.controler} />);
-
-      case 'giveaways':
-        return (<Giveaways controler={this.controler}/>);
-
-      case 'information':
-        return (<Information controler={this.controler} />);
     }
   }
 
@@ -88,11 +85,7 @@ export default class App extends Component {
     return (
       <ThemeProvider uiTheme={uiTheme}>
         <View style={styles.container}>
-          {this.renderScreen()}
-          <Navigator
-            current={this.state.screen}
-            navigate={this.controler.selectScreen}
-          />
+          <MainNavigation screenProps={{controller: this.controller}}/>
         </View>
       </ThemeProvider>
     );
