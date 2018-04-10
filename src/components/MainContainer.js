@@ -18,9 +18,8 @@ export default class MainContainer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.modal||null}
         <Toolbar
-          leftElement="menu"
+          leftElement={this.props.goBack ? 'arrow-back' : 'menu'}
           centerElement={this.props.title}
           searchable={this.props.search ? {
             autoFocus:      true,
@@ -28,6 +27,7 @@ export default class MainContainer extends Component {
             onChangeText:   text => this.props.controller.updateSearch(text),
             onSearchClosed: () => this.props.controller.updateSearch('')
           } : null}
+          onLeftElementPress={this.props.goBack ? this.props.goBack : null}
         />
         <View style={styles.main}>
           {this.props.children}

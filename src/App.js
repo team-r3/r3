@@ -7,13 +7,14 @@ import {
   View
 } from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
-import Navigator from './components/Navigator';
-import Map from './screens/Map/Map';
-import Giveaways from './screens/Giveaways';
-import Information from './screens/Information';
-import communityPosts from './screens/Giveaways/posts';
+import Navigator           from './components/Navigator';
+import MapScreen           from './screens/Map/MapScreen';
+import CommunityScreen     from './screens/Community/CommunityScreen';
+import CommunityPostScreen from './screens/Community/CommunityPostScreen';
+import InformationScreen   from './screens/Information/InformationScreen';
+import communityPosts      from './screens/Community/posts';
 
 // Enable animations
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -38,13 +39,22 @@ const styles = StyleSheet.create({
   }
 });
 
+
 /**
- * Navigation component
+ * Community screen navigation stack
+ */
+const CommunityStack = StackNavigator({
+  Community:     { screen: CommunityScreen },
+  CommunityPost: { screen: CommunityPostScreen },
+}, { headerMode: 'none' });
+
+/**
+ * Main navigation component
  */
 const MainNavigation = TabNavigator({
-  Map:         { screen: Map },
-  Community:   { screen: Giveaways },
-  Information: { screen: Information },
+  Map:         { screen: MapScreen },
+  Community:   { screen: CommunityStack },
+  Information: { screen: InformationScreen },
 }, {
   tabBarPosition:  'bottom',
   tabBarComponent: props => {
@@ -63,17 +73,14 @@ export default class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      modal:  null,
       search: '',
       communityPosts: communityPosts
     };
 
     // State control object
     this.controller = {
-      showModal:         (modal) => { this.setState({ modal: modal }); },
       updateSearch:      (text) => { this.setState({ search: text }); },
       getCommunityPosts: () => { return this.state.communityPosts; },
-      getModal:          () => { return this.state.modal; },
       getSearch:         () => { return this.state.search; }
     }
   }

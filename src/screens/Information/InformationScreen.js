@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 /**
  * Information screen component
  */
-export default class Information extends Component {
+export default class InformationScreen extends Component {
   render() {
     return (
       <MainContainer

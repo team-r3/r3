@@ -3,44 +3,11 @@ import { ScrollView, View, TextInput, Text } from 'react-native';
 import { ActionButton, ListItem, Subheader } from 'react-native-material-ui';
 
 import MainContainer from '../../components/MainContainer';
-import Modal from '../../components/Modal';
 
 /**
- * Map screen component
+ * Community screen component
  */
-export default class Giveaways extends Component {
-  getModal() {
-    const controller = this.props.screenProps.controller;
-    switch (controller.getModal()) {
-      case 'request':
-      case 'give':
-        const request  = (controller.getModal() == 'request');
-        const validate = () => {
-          return true;
-        }
-        return (    
-          <Modal
-            title={request ? 'Request' : 'Give away'}
-            modal={controller.getModal()}
-            validate={validate}
-          >
-            <TextInput
-              style={{height: 40}}
-              placeholder="Insert your name"
-              // onChangeText={(text) => this.setState({text})}
-            />
-            <TextInput
-              style={{height: 40}}
-              placeholder={request ? "Describe what you are requesting" : "Describe what you're giving away"}
-              // onChangeText={(text) => this.setState({text})}
-            />
-          </Modal>
-        );
-
-      default:
-        return null;
-    }
-  }
+export default class CommunityScreen extends Component {
 
   matchPersonName (personName, filter) {
     const filters = filter.split(' ');
@@ -75,16 +42,14 @@ export default class Giveaways extends Component {
    *
    */
   render() {
-    const controller = this.props.screenProps.controller;
-
     const actions = [
       {
-        name:  'give',
+        name:  'give-away', // Action name: 'give-away'
         label: 'Give away',
         icon:  'insert-emoticon'
       },
       {
-        name:  'request',
+        name:  'request',   // Action name: 'request'
         label: 'Make a request',
         icon:  'chat-bubble'
       }
@@ -93,8 +58,8 @@ export default class Giveaways extends Component {
     const onAction = (action) => {
       switch (action) {
         case 'request':
-        case 'give':
-        controller.showModal(action);
+        case 'give-away':
+          this.props.navigation.navigate('CommunityPost', { type: action })
           break;
       }
     };
@@ -103,8 +68,7 @@ export default class Giveaways extends Component {
       <MainContainer
         title='Community'
         search='Search'
-        controller={controller}
-        modal={this.getModal()}
+        controller={this.props.screenProps.controller}
       >
         <ScrollView>
           {this.getPosts().map((post, index) => {

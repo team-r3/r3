@@ -9,7 +9,7 @@ import mapSpots from './spots.json';
 /**
  * Map screen component
  */
-export default class Map extends Component {
+export default class MapScreen extends Component {
   render() {
     return (
       <MainContainer
