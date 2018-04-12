@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BottomNavigation } from 'react-native-material-ui';
+import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text } from 'native-base';
 
 /**
  * Screen chooser component
@@ -7,28 +7,35 @@ import { BottomNavigation } from 'react-native-material-ui';
 export default class Navigator extends Component {
   render() {
     const currentIndex = this.props.navigation.state.index;
-    const currentRoute = this.props.navigation.state.routes[currentIndex].routeName;
     return (
-      <BottomNavigation active={currentRoute} hidden={false} >
-        <BottomNavigation.Action
-          key="Map"
-          icon="place"
-          label="Recycling spots"
-          onPress={() => this.props.navigation.navigate('Map')}
-        />
-        <BottomNavigation.Action
-          key="Community"
-          icon="view-list"
-          label="Community"
-          onPress={() => this.props.navigation.navigate('Community')}
-        />
-        <BottomNavigation.Action
-          key="Information"
-          icon="info"
-          label="Information"
-          onPress={() => this.props.navigation.navigate('Information')}
-        />
-      </BottomNavigation>
+      <Footer>
+        <FooterTab>
+          <Button 
+            vertical
+            active={currentIndex === 0}
+            onPress={() => this.props.navigation.navigate('Map')}
+          >
+            <Icon name="pin" />
+            <Text>Recycling Spots</Text>
+          </Button>
+          <Button 
+            vertical
+            active={currentIndex === 1}
+            onPress={() => this.props.navigation.navigate('Community')}
+          >
+            <Icon name="people" />
+            <Text>Comunity</Text>
+          </Button>
+          <Button 
+            vertical
+            active={currentIndex === 2}
+            onPress={() => this.props.navigation.navigate('Information')}
+          >
+            <Icon name="information-circle"/>
+            <Text>Information</Text>
+          </Button>
+        </FooterTab>
+      </Footer>
     );
   }
 }
