@@ -3,11 +3,25 @@ import { ScrollView, View, TextInput, Text } from 'react-native';
 import { ActionButton, ListItem, Subheader } from 'react-native-material-ui';
 
 import MainContainer from '../../components/MainContainer';
+import MainToolbar   from '../../components/MainToolbar';
 
 /**
  * Community screen component
  */
 export default class CommunityScreen extends Component {
+  static navigationOptions = ({ navigation, screenProps }) => ({
+    header: (
+      <MainToolbar
+        navigation={navigation}
+        title='Community'
+        search={{
+          placeholder: 'Search',
+          onChange:    text => screenProps.controller.updateSearch(text),
+          onClose:     () => screenProps.controller.updateSearch('')
+        }}
+      />
+    )
+  });
 
   matchPersonName (personName, filter) {
     const filters = filter.split(' ');
@@ -46,12 +60,12 @@ export default class CommunityScreen extends Component {
       {
         name:  'give-away', // Action name: 'give-away'
         label: 'Give away',
-        icon:  'insert-emoticon'
+        icon:  'insert-emoticon'  //TODO: change to 'heart'
       },
       {
         name:  'request',   // Action name: 'request'
         label: 'Make a request',
-        icon:  'chat-bubble'
+        icon:  'chat-bubble'      //TODO: change to 'basket'
       }
     ];
 
@@ -76,6 +90,7 @@ export default class CommunityScreen extends Component {
               <ListItem
                 divider
                 leftElement={post.type == 'request' ? 'chat-bubble' : 'insert-emoticon'}
+                // leftElement={post.type == 'request' ? 'basket' : 'heart'}
                 centerElement={{
                     primaryText:   post.user,
                     secondaryText: post.text,

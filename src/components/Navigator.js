@@ -16,7 +16,7 @@ export default class Navigator extends Component {
             onPress={() => this.props.navigation.navigate('Map')}
           >
             <Icon name="pin" />
-            <Text>Recycling Spots</Text>
+            <Text>Recycling</Text>
           </Button>
           <Button 
             vertical

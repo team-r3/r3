@@ -4,12 +4,31 @@ import { Subheader } from 'react-native-material-ui';
 import MapView from 'react-native-maps';
 
 import MainContainer from '../../components/MainContainer';
+import MainToolbar   from '../../components/MainToolbar';
 import mapSpots from './spots.json';
 
 /**
  * Map screen component
  */
 export default class MapScreen extends Component {
+  static navigationOptions = ({
+    navigation,
+    navigationOptions,
+    screenProps
+  }) => ({
+    header: (
+      <MainToolbar
+        navigation={navigation}
+        title='Recycling spots'
+        search={{
+          placeholder: 'Search',
+          onChange:    text => screenProps.controller.updateSearch(text),
+          onClose:     () => screenProps.controller.updateSearch('')
+        }}
+      />
+    )
+  });
+
   render() {
     return (
       <MainContainer

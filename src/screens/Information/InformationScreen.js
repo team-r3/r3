@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { PropTypes } from 'prop-types';
 
 import MainContainer from '../../components/MainContainer';
+import MainToolbar   from '../../components/MainToolbar';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +17,20 @@ const styles = StyleSheet.create({
  * Information screen component
  */
 export default class InformationScreen extends Component {
+  static navigationOptions = ({ navigation, screenProps }) => ({
+    header: (
+      <MainToolbar
+        navigation={navigation}
+        title='Information'
+        search={{
+          placeholder: 'Search',
+          onChange:    text => screenProps.controller.updateSearch(text),
+          onClose:     () => screenProps.controller.updateSearch('')
+        }}
+      />
+    )
+  });
+
   render() {
     return (
       <MainContainer
