@@ -24,7 +24,7 @@ export default {
   btnUppercaseAndroidText: true,
 
   // Badge
-  badgeBg:      "#ff4100", //"#ED1727",
+  badgeBg:      "#E53300", //"#ED1727",
   badgeColor:   "#fff",
   badgePadding: platform === "ios" ? 3 : 0,
 
@@ -83,7 +83,7 @@ export default {
 
   // Card
   cardDefaultBg:   "#fff",
-  cardBorderColor: "#ccc",
+  cardBorderColor: "#f4f4f4", //"#ccc",
 
   // CheckBox
   CheckboxRadius:        platform === "ios" ? 13 : 0,
@@ -100,10 +100,10 @@ export default {
 
   // Color
   brandPrimary: platform === "ios" ? "#007aff" : mainColor,
-  brandInfo:    "#607afd", //"#62B1F6",
-  brandSuccess: "#74ce5a", //"#5cb85c",
-  brandDanger:  "#fd3f3a", //"#d9534f",
-  brandWarning: "#fd9f3f", //"#f0ad4e",
+  brandInfo:    "#607afd", //"#457FFC",
+  brandSuccess: "#62D85D", //"#5cb85c",
+  brandDanger:  "#E53300", //"#d9534f",
+  brandWarning: "#FDAD1C", //"#f0ad4e",
   brandDark:    "#000",
   brandLight:   "#f4f4f4",
 
@@ -163,8 +163,8 @@ export default {
   // InputGroup
   inputFontSize: platform === "ios" ? 17 : 16, //17,
   inputBorderColor: "#D9D5DC",
-  inputSuccessBorderColor: "#2b8339",
-  inputErrorBorderColor: "#ed2f2f",
+  inputSuccessBorderColor: "#74D670", //"#2b8339",
+  inputErrorBorderColor: "#FC4C1E", //"#ed2f2f",
   inputHeightBase: 50,
   get inputColor() {
     return platform === "ios" ? this.textColor : "#575757"; //this.textColor;
@@ -182,11 +182,11 @@ export default {
 
   // List
   listBg: "transparent",
-  listBorderColor: "#c9c9c9",
+  listBorderColor: "#f4f4f4", //"#c9c9c9",
   listDividerBg: "#f4f4f4",
   listBtnUnderlayColor: "#DDD",
   listItemPadding: platform === "ios" ? 10 : 12,
-  listNoteColor: "#808080",
+  listNoteColor: "#949494", //"#808080",
   listNoteSize: 13,
 
   // Progress Bar
@@ -210,8 +210,8 @@ export default {
   segmentBorderColorMain: platform === "ios" ? "#a7a6ab" : mainColor,
 
   // Spinner
-  defaultSpinnerColor: "#45D56E",
-  inverseSpinnerColor: "#1A191B",
+  defaultSpinnerColor: "#B2B2B2", //"#45D56E",
+  inverseSpinnerColor: lightColor, //"#1A191B",
 
   // Tab
   tabDefaultBg: platform === "ios" ? "#F8F8F8" : mainColor,
