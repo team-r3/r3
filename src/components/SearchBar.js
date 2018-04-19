@@ -11,7 +11,7 @@ class SearchBar extends Component {
     return (
       <Header searchBar rounded>
         <Item>
-          <Button transparent onPress={() => this.props.onClose()}>
+          <Button transparent rounded onPress={() => this.props.onClose()}>
             <Icon name='arrow-back' />
           </Button>
           <Input
@@ -24,7 +24,7 @@ class SearchBar extends Component {
             }
           />
           {this.props.onSubmit ? (
-            <Button transparent onPress={() => this.props.onSubmit()}>
+            <Button transparent rounded onPress={() => this.props.onSubmit()}>
               <Icon name='search' />
             </Button>
           ) : null}

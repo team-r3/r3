@@ -23,7 +23,7 @@ class BasicToolbar extends Component {
     return (
       <Header hasSubtitle={this.props.subtitle ? true : false}>
         <Left>
-          <Button transparent onPress={() => this.props.left.onPress}>
+          <Button transparent rounded onPress={() => this.props.left.onPress}>
             <Icon name={this.props.left.icon} />
           </Button>
         </Left>

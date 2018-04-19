@@ -30,8 +30,8 @@ export default {
 
   // Button
   btnFontFamily: platform === "ios" ? "System" : "Roboto_medium",
-  btnDisabledBg: "#b5b5b5",
-  buttonPadding: 6,
+  btnDisabledBg: "#CFCFCF", //"#b5b5b5",
+  buttonPadding: 10, //6,
   get btnPrimaryBg() {
     return this.brandPrimary;
   },
@@ -104,7 +104,7 @@ export default {
   brandSuccess: "#62D85D", //"#5cb85c",
   brandDanger:  "#E53300", //"#d9534f",
   brandWarning: "#FDAD1C", //"#f0ad4e",
-  brandDark:    "#000",
+  brandDark:    "#3B3B3B", // "#000",
   brandLight:   "#f4f4f4",
 
   // Font

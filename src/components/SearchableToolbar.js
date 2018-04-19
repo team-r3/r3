@@ -32,7 +32,7 @@ class SearchableToolbar extends Component {
       />
     ) : (
       <BasicToolbar {...this.props}>
-        <Button transparent onPress={() => this.setState({ isActive: true })}>
+        <Button transparent rounded onPress={() => this.setState({ isActive: true })}>
           <Icon name="search" />
         </Button>
         {this.props.children}
