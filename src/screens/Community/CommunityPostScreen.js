@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { TextInput } from 'react-native';
-import { Subheader } from 'react-native-material-ui';
+import React, { Component } from 'react'
+import { TextInput } from 'react-native'
+// import { Subheader } from 'react-native-material-ui'
 
-import MainContainer from '../../components/MainContainer';
+import MainContainer from '../../components/MainContainer'
 
 /**
  * Community Post screen component
  */
 export default class CommunityPostScreen extends Component {
-  render() {
-    const type = this.props.navigation.getParam('type', 'request');
+  render () {
+    const type = this.props.navigation.getParam('type', 'request')
     return (
       <MainContainer
         title={type === 'request' ? 'Request' : 'Give away'}
@@ -18,7 +18,7 @@ export default class CommunityPostScreen extends Component {
       >
         <TextInput
           style={{height: 40}}
-          placeholder="Insert your name"
+          placeholder='Insert your name'
           // onChangeText={(text) => this.setState({text})}
         />
         <TextInput

@@ -29,5 +29,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "standard": {
+    "ignore": [
+      "/native-base-theme/"
+    ]
   }
 }

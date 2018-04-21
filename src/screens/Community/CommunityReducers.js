@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 // Import action types for the community screen
 import {
@@ -8,23 +8,23 @@ import {
   COMMUNITY_APPEND_POSTS,
   COMMUNITY_REMOVE_POST,
   COMMUNITY_RESET_POSTS
-} from './ComunityActions';
+} from './ComunityActions'
 
 /*
- * Reducers 
+ * Reducers
  */
 
 // Reducer for the text search value
 function search (state = '', action) {
   switch (action.type) {
     case COMMUNITY_UPDATE_SEARCH:
-      return action.value;
+      return action.value
 
     case COMMUNITY_CLEAR_SEARCH:
-      return '';
+      return ''
 
     default:
-      return state;
+      return state
   }
 }
 
@@ -32,18 +32,18 @@ function search (state = '', action) {
 function posts (state = [], action) {
   switch (action.type) {
     case COMMUNITY_ADD_POST:
-			// Add new post at the start of the existing list
-      return [action.post, ...state];
+      // Add new post at the start of the existing list
+      return [action.post, ...state]
 
     case COMMUNITY_APPEND_POSTS:
-      return [...state, ...action.posts];
+      return [...state, ...action.posts]
 
     case COMMUNITY_REMOVE_POST:
-			// Remove any existing post(s) that match the action cuid
-			return state.filter(post => post.id !== action.postId);
+      // Remove any existing post(s) that match the action cuid
+      return state.filter(post => post.id !== action.postId)
 
     case COMMUNITY_RESET_POSTS:
-			// This just replaces ALL existing posts with the ones from the action
+      // This just replaces ALL existing posts with the ones from the action
       return action.posts
 
     default:
@@ -55,19 +55,19 @@ function posts (state = [], action) {
 export default combineReducers({
   search,
   posts
-});
+})
 
-/* 
+/*
  * Selectors
  */
 
 // Get text search value
-export const getSearch = state => state.community.search;
+export const getSearch = state => state.community.search
 
 // Get all posts
-export const getPosts = state => state.community.posts;
+export const getPosts = state => state.community.posts
 
 // Get post by postId
 export const getPost = (state, postId) => {
-  return state.community.posts.filter(post => post.id === postId)[0];
-};
+  return state.community.posts.filter(post => post.id === postId)[0]
+}

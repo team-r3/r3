@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Dialog, DialogDefaultActions } from 'react-native-material-ui';
+import React, { Component } from 'react'
+import { StyleSheet, View, Text } from 'react-native'
+import { Dialog, DialogDefaultActions } from 'react-native-material-ui'
 
 const styles = StyleSheet.create({
   container: {
@@ -11,10 +11,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   }
-});
+})
 
 export default class Modal extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Dialog>
@@ -30,15 +30,15 @@ export default class Modal extends Component {
               */
               options={{ ok: { disabled: true } }}
               onActionPress={(action) => {
-                if (action == 'ok') {
-                  //TODO: do stuff...
+                if (action === 'ok') {
+                  // TODO: do stuff...
                 }
-                this.props.modal.show(null);
+                this.props.modal.show(null)
               }}
             />
           </Dialog.Actions>
         </Dialog>
       </View>
-    );
+    )
   }
 }

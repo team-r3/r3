@@ -1,21 +1,21 @@
-import PropTypes            from 'prop-types'
-import React, { Component } from 'react';
-import SearchableToolbar    from './SearchableToolbar'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import SearchableToolbar from './SearchableToolbar'
 
 /**
  * Generic toolbar component for the main screens.
- * 
+ *
  * Provides a menu button on the left, and takes title/subtitle as well as the
  * search configuration from props. Additional buttons for the right area can
  * be added via children.
  */
 class MainToolbar extends Component {
-  render() {
+  render () {
     return (
       <SearchableToolbar
         left={{
-          icon:    'menu',
-          onPress: () => this.props.navigation.navigate("DrawerOpen")
+          icon: 'menu',
+          onPress: () => this.props.navigation.navigate('DrawerOpen')
         }}
         {...this.props}
       >
@@ -27,14 +27,14 @@ class MainToolbar extends Component {
 
 // Required props and corresponding shapes
 MainToolbar.propTypes = {
-  title:    PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  search:   PropTypes.shape({
+  search: PropTypes.shape({
     placeholder: PropTypes.string.isRequired,
-    onClose:     PropTypes.func.isRequired,
-    onChange:    PropTypes.func,
-    onSubmit:    PropTypes.func,
+    onClose: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func
   }).isRequired
-};
+}
 
-export default MainToolbar;
+export default MainToolbar
