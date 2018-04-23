@@ -7,17 +7,12 @@ import {
   View
 } from 'react-native'
 import { COLOR, ThemeProvider } from 'react-native-material-ui'
-import { TabNavigator, StackNavigator } from 'react-navigation'
 
 import { StyleProvider } from 'native-base'
 import getTheme from '../native-base-theme/components'
 import themeVariables from '../native-base-theme/variables/commonColor'
 
-import Navigator from './components/Navigator'
-import MapScreen from './screens/Map/MapScreen'
-import CommunityScreen from './screens/Community/CommunityScreen'
-import CommunityPostScreen from './screens/Community/CommunityPostScreen'
-import InformationScreen from './screens/Information/InformationScreen'
+import MainNavigation from './navigation'
 import communityPosts from './screens/Community/posts'
 
 // Enable animations
@@ -40,37 +35,6 @@ const uiTheme = {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  }
-})
-
-/**
- * Navigation stacks for the main screens
- */
-const MapStack = StackNavigator({
-  Map: { screen: MapScreen }
-})
-const CommunityStack = StackNavigator({
-  Community: { screen: CommunityScreen },
-  CommunityPost: { screen: CommunityPostScreen }
-})
-const InformationStack = StackNavigator({
-  Information: { screen: InformationScreen }
-})
-
-/**
- * Main navigation component
- */
-const MainNavigation = TabNavigator({
-  Map: { screen: MapStack },
-  Community: { screen: CommunityStack },
-  Information: { screen: InformationStack }
-}, {
-  headerMode: 'float',
-  tabBarPosition: 'bottom',
-  tabBarComponent: props => {
-    return (
-      <Navigator navigation={props.navigation} />
-    )
   }
 })
 
