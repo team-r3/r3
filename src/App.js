@@ -7,13 +7,14 @@ import {
   View
 } from 'react-native'
 import { COLOR, ThemeProvider } from 'react-native-material-ui'
+import { Provider } from 'react-redux'
 
 import { StyleProvider } from 'native-base'
 import getTheme from '../native-base-theme/components'
 import themeVariables from '../native-base-theme/variables/commonColor'
 
 import MainNavigation from './navigation'
-import communityPosts from './screens/Community/posts'
+import configureStore from './store'
 
 // Enable animations
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
@@ -38,6 +39,9 @@ const styles = StyleSheet.create({
   }
 })
 
+// Initialize store
+const store = configureStore()
+
 /**
  * Main component
  */
@@ -45,8 +49,7 @@ export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      search: '',
-      communityPosts: communityPosts
+      search: ''
     }
 
     // State control object
@@ -62,13 +65,15 @@ export default class App extends Component {
    */
   render () {
     return (
-      <StyleProvider style={getTheme(themeVariables)}>
-        <ThemeProvider uiTheme={uiTheme}>
-          <View style={styles.container}>
-            <MainNavigation screenProps={{controller: this.controller}} />
-          </View>
-        </ThemeProvider>
-      </StyleProvider>
+      <Provider store={store}>
+        <StyleProvider style={getTheme(themeVariables)}>
+          <ThemeProvider uiTheme={uiTheme}>
+            <View style={styles.container}>
+              <MainNavigation screenProps={{controller: this.controller}} />
+            </View>
+          </ThemeProvider>
+        </StyleProvider>
+      </Provider>
     )
   }
 }

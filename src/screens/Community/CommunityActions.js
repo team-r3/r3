@@ -2,7 +2,10 @@
  * Export action constants
  */
 export const COMMUNITY_UPDATE_SEARCH = 'COMMUNITY_UPDATE_SEARCH'
+export const COMMUNITY_UPDATE_SEARCH_HINTS = 'COMMUNITY_UPDATE_SEARCH_HINTS'
+export const COMMUNITY_SUBMIT_SEARCH = 'COMMUNITY_SUBMIT_SEARCH'
 export const COMMUNITY_CLEAR_SEARCH = 'COMMUNITY_CLEAR_SEARCH'
+export const COMMUNITY_CLOSE_SEARCH = 'COMMUNITY_CLOSE_SEARCH'
 export const COMMUNITY_ADD_POST = 'COMMUNITY_ADD_POST'
 export const COMMUNITY_APPEND_POSTS = 'COMMUNITY_APPEND_POSTS'
 export const COMMUNITY_REMOVE_POST = 'COMMUNITY_REMOVE_POST'
@@ -17,9 +20,24 @@ export function updateSearch (value) {
   return { type: COMMUNITY_UPDATE_SEARCH, value }
 }
 
-// Clear the text search
+// Update the text search hints to a whole new set
+export function updateSearchHints (hints) {
+  return { type: COMMUNITY_UPDATE_SEARCH_HINTS, hints }
+}
+
+// Submit a new text search value
+export function submitSearch (value) {
+  return { type: COMMUNITY_SUBMIT_SEARCH, value }
+}
+
+// Clear the text search input
 export function clearSearch () {
   return { type: COMMUNITY_CLEAR_SEARCH }
+}
+
+// Close the text search (clearing the input and the submitted value)
+export function closeSearch () {
+  return { type: COMMUNITY_CLOSE_SEARCH }
 }
 
 // Add a single post at the top of the list

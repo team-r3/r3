@@ -1,62 +1,23 @@
 import React, { Component } from 'react'
-import { ScrollView } from 'react-native'
+import { View, ScrollView } from 'react-native'
+import { connect } from 'react-redux'
 import { ActionButton, ListItem } from 'react-native-material-ui'
 
-import MainContainer from '../../components/MainContainer'
-import MainToolbar from '../../components/MainToolbar'
+import { getFilteredPosts } from './CommunityReducers'
+
+import CommunityHeader from './CommunityHeader'
+
+import { resetPosts } from './CommunityActions'
+import examplePosts from './posts'
 
 /**
  * Community screen component
  */
-export default class CommunityScreen extends Component {
-  static navigationOptions ({ navigation, screenProps }) {
-    return {
-      header: (
-        <MainToolbar
-          navigation={navigation}
-          title='Community'
-          search={{
-            placeholder: 'Search',
-            onChange: text => screenProps.controller.updateSearch(text),
-            onClose: () => screenProps.controller.updateSearch('')
-          }}
-        />
-      )
-    }
+class CommunityScreen extends Component {
+  componentDidMount () {
+    this.props.fetchData()
   }
 
-  matchPersonName (personName, filter) {
-    const filters = filter.split(' ')
-
-    // All filters are included in the name
-    if (filters.every(filter => { return personName.includes(filter) })) {
-      return true
-    }
-    // All name parts are referenced in the filter, as initials, plus last name
-    if (filters.length === 1) {
-      return personName.split(' ').every((value, i, nameParts) => {
-        return (i < nameParts.length - 1)
-          ? value[0] === filters[0][i] // First names' initials
-          : value.includes(filters[0].slice(i)) // Last name must include the remainder of the filter
-      })
-    }
-    return false
-  }
-
-  getPosts () {
-    const controller = this.props.screenProps.controller
-    const filter = controller.getSearch().trim().toLowerCase()
-    return controller.getCommunityPosts().filter((post) => {
-      return (
-        post.text.toLowerCase().includes(filter) ||
-        this.matchPersonName(post.user.toLowerCase(), filter)
-      )
-    })
-  }
-
-  /**
-   *
-   */
   render () {
     const actions = [
       {
@@ -81,13 +42,9 @@ export default class CommunityScreen extends Component {
     }
 
     return (
-      <MainContainer
-        title='Community'
-        search='Search'
-        controller={this.props.screenProps.controller}
-      >
+      <View>
         <ScrollView>
-          {this.getPosts().map((post, index) => {
+          {this.props.posts.map((post, index) => {
             return (
               <ListItem
                 divider
@@ -106,7 +63,37 @@ export default class CommunityScreen extends Component {
           })}
         </ScrollView>
         <ActionButton onPress={onAction} actions={actions} transition='speedDial' />
-      </MainContainer>
+      </View>
     )
   }
 }
+
+// Configure header
+CommunityScreen.navigationOptions = ({ navigation }) => {
+  return {
+    header: (
+      <CommunityHeader
+        navigation={navigation}
+        title='Community'
+        search={{ placeholder: 'Search' }}
+      />
+    )
+  }
+}
+
+// Map the relevant store state to the community screen component
+const mapStateToProps = (state) => {
+  return {
+    posts: getFilteredPosts(state)
+  }
+}
+
+// Map actions to event handler props on the community screen component
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // NOTE: This is temporary, later "fetchData" should load from an API
+    fetchData: () => dispatch(resetPosts(examplePosts))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommunityScreen)
