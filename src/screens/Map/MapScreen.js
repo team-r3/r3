@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, Image } from 'react-native'
 import MapView from 'react-native-maps'
 
-import MainContainer from '../../components/MainContainer'
 import MainToolbar from '../../components/MainToolbar'
 import mapSpots from './spots.json'
 
@@ -12,60 +11,53 @@ import mapSpots from './spots.json'
 class MapScreen extends Component {
   render () {
     return (
-      <MainContainer
-        title='Recycling spots'
-        search='Search'
-        controller={this.props.screenProps.controller}
+      <MapView style={styleMap.map}
+        region={{
+          latitude: 37.015589,
+          longitude: -7.933262,
+          latitudeDelta: 0.03,
+          longitudeDelta: 0.03
+        }}
       >
 
-        <MapView style={styleMap.map}
-          region={{
-            latitude: 37.015589,
-            longitude: -7.933262,
-            latitudeDelta: 0.03,
-            longitudeDelta: 0.03
-          }}
-        >
+        {mapSpots.map((spot, index) => {
+          let title, description, imageSource
+          switch (spot.type) {
+            case 'eco':
+              title = 'Recycle center'
+              description = 'Available: Paper, Plastic, Glass'
+              imageSource = require('./img/map-pin-eco.png')
+              break
+            case 'battery':
+              title = 'Battery'
+              description = 'Battery drop point'
+              imageSource = require('./img/map-pin-battery.png')
+              break
+            case 'oil':
+              title = 'Oil waste'
+              description = 'Oil drop point'
+              imageSource = require('./img/map-pin-oil.png')
+              break
+          }
+          return (
+            <MapView.Marker
+              coordinate={{
+                latitude: spot.latitude,
+                longitude: spot.longitude
+              }}
+              title={title}
+              description={description}
+              key={spot.key}
+            >
+              <Image
+                style={{width: 50, height: 50}}
+                source={imageSource}
+              />
+            </MapView.Marker>
+          )
+        })}
 
-          {mapSpots.map((spot, index) => {
-            let title, description, imageSource
-            switch (spot.type) {
-              case 'eco':
-                title = 'Recycle center'
-                description = 'Available: Paper, Plastic, Glass'
-                imageSource = require('./img/map-pin-eco.png')
-                break
-              case 'battery':
-                title = 'Battery'
-                description = 'Battery drop point'
-                imageSource = require('./img/map-pin-battery.png')
-                break
-              case 'oil':
-                title = 'Oil waste'
-                description = 'Oil drop point'
-                imageSource = require('./img/map-pin-oil.png')
-                break
-            }
-            return (
-              <MapView.Marker
-                coordinate={{
-                  latitude: spot.latitude,
-                  longitude: spot.longitude
-                }}
-                title={title}
-                description={description}
-                key={spot.key}
-              >
-                <Image
-                  style={{width: 50, height: 50}}
-                  source={imageSource}
-                />
-              </MapView.Marker>
-            )
-          })}
-
-        </MapView>
-      </MainContainer>
+      </MapView>
     )
   }
 }

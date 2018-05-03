@@ -4,7 +4,7 @@ import { combineReducers } from 'redux'
 import { MAP_UPDATE_SEARCH, MAP_CLEAR_SEARCH } from './MapActions'
 
 /*
- * Reducers 
+ * Reducers
  */
 
 // Reducer for the text search value
@@ -26,7 +26,7 @@ export default combineReducers({
   search
 })
 
-/* 
+/*
  * Selectors
  */
 
