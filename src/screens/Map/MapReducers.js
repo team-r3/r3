@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 // Import action types for the map screen
-import { MAP_UPDATE_SEARCH, MAP_CLEAR_SEARCH } from './MapActions';
+import { MAP_UPDATE_SEARCH, MAP_CLEAR_SEARCH } from './MapActions'
 
 /*
  * Reducers 
@@ -11,24 +11,24 @@ import { MAP_UPDATE_SEARCH, MAP_CLEAR_SEARCH } from './MapActions';
 function search (state = '', action) {
   switch (action.type) {
     case MAP_UPDATE_SEARCH:
-      return action.value;
+      return action.value
 
     case MAP_CLEAR_SEARCH:
-      return '';
+      return ''
 
     default:
-      return state;
+      return state
   }
 }
 
 // Combine reducers into a single reducer for the Map screen
 export default combineReducers({
   search
-});
+})
 
 /* 
  * Selectors
  */
 
 // Get text search value
-export const getSearch = state => state.map.search;
+export const getSearch = state => state.map.search
