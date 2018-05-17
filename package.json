@@ -8,23 +8,23 @@
     "lint": "standard"
   },
   "dependencies": {
-    "native-base": "^2.4.2",
+    "native-base": "^2.4.4",
     "prop-types": "^15.6.1",
-    "react": "^16.3.0-alpha.1",
-    "react-native": "^0.54.0",
+    "react": "^16.3.2",
+    "react-native": "^0.54.4",
     "react-native-maps": "^0.21.0",
     "react-native-material-ui": "^1.22.2",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.11",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
+    "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
-    "react-test-renderer": "16.3.0-alpha.3",
+    "react-test-renderer": "^16.3.2",
     "standard": "^11.0.1"
   },
   "jest": {
