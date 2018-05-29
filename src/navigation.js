@@ -6,6 +6,7 @@ import MapScreen from './screens/Map/MapScreen'
 import CommunityScreen from './screens/Community/CommunityScreen'
 import CommunityPostScreen from './screens/Community/CommunityPostScreen'
 import InformationScreen from './screens/Information/InformationScreen'
+import LoginScreen from './screens/Login/LoginScreen'
 
 /**
  * Navigation stacks for the main screens
@@ -40,4 +41,19 @@ const MainNavigation = TabNavigator({
   }
 })
 
-export default MainNavigation
+const RootStack = StackNavigator(
+  {
+    Main: {
+      screen: MainNavigation
+    },
+    Login: {
+      screen: LoginScreen
+    }
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+)
+
+export default RootStack

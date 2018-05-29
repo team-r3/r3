@@ -24,7 +24,7 @@ export default class Navigator extends Component {
             onPress={() => this.props.navigation.navigate('Community')}
           >
             <Icon name='people' />
-            <Text>Comunity</Text>
+            <Text>Community</Text>
           </Button>
           <Button
             vertical

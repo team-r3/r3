@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
+import { Button, Text } from 'native-base'
 import { connect } from 'react-redux'
 import { ActionButton, ListItem } from 'react-native-material-ui'
 
 import { getFilteredPosts } from './CommunityReducers'
+import { getLogin } from '../Login/LoginReducers'
 
 import CommunityHeader from './CommunityHeader'
 
@@ -41,30 +43,44 @@ class CommunityScreen extends Component {
       }
     }
 
-    return (
-      <View>
-        <ScrollView>
-          {this.props.posts.map((post, index) => {
-            return (
-              <ListItem
-                divider
-                leftElement={post.type === 'request' ? 'chat-bubble' : 'insert-emoticon'}
-                // leftElement={post.type == 'request' ? 'basket' : 'heart'}
-                centerElement={{
-                  primaryText: post.user,
-                  secondaryText: post.text
-                }}
-                key={post.key}
-                onPress={() => {}}
-                onPressValue={post.key}
-                numberOfLines={'dynamic'}
-              />
-            )
-          })}
-        </ScrollView>
-        <ActionButton onPress={onAction} actions={actions} transition='speedDial' />
-      </View>
-    )
+    if (this.props.isLoggedIn) {
+      return (
+        <View>
+          <ScrollView>
+            {this.props.posts.map((post, index) => {
+              return (
+                <ListItem
+                  divider
+                  leftElement={post.type === 'request' ? 'chat-bubble' : 'insert-emoticon'}
+                  // leftElement={post.type == 'request' ? 'basket' : 'heart'}
+                  centerElement={{
+                    primaryText: post.user,
+                    secondaryText: post.text
+                  }}
+                  key={post.key}
+                  onPress={() => {}}
+                  onPressValue={post.key}
+                  numberOfLines={'dynamic'}
+                />
+              )
+            })}
+          </ScrollView>
+          <ActionButton onPress={onAction} actions={actions} transition='speedDial' />
+        </View>
+      )
+    } else {
+      return (
+        <View>
+          <Text>Please login to continue </Text>
+          <Text>To access the community section, you must first login with your account, or create a new account if you don't have one.</Text>
+          <Button
+            onPress={() => this.props.navigation.navigate('Login')}
+          >
+            <Text>Login</Text>
+          </Button>
+        </View>
+      )
+    }
   }
 }
 
@@ -84,7 +100,9 @@ CommunityScreen.navigationOptions = ({ navigation }) => {
 // Map the relevant store state to the community screen component
 const mapStateToProps = (state) => {
   return {
-    posts: getFilteredPosts(state)
+    posts: getFilteredPosts(state),
+    isLoggedIn: getLogin(state)
+
   }
 }
 
