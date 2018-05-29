@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { Linking, ScrollView, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
 import { Body, Card, List, ListItem, Icon, Text, Left } from 'native-base'
 
 import MainToolbar from '../../components/MainToolbar'
+
+import { getSearch } from './InformationReducers'
+
+import information from './information'
 
 const styles = StyleSheet.create({
   container: {
@@ -98,8 +103,28 @@ class InformationScreen extends Component {
                 <Text>Rechargeable batteries; car batteries; toy batteries; home appliances batteries</Text>
               </Body>
             </ListItem>
+
+
+          {information.map((entry, index) => {
+            return (
+              <ListItem icon key={index}>
+              <Left>
+                <Icon name='checkmark-circle' style={{color: 'green'}} />
+              </Left>
+              <Body>
+                <Text>{entry.do.join('; ')}</Text>
+              </Body>
+            </ListItem>
+
+            )
+          })}
+    
+
+
           </List>
         </Card>
+
+
       </ScrollView>
     )
   }
@@ -119,4 +144,16 @@ InformationScreen.navigationOptions = ({ navigation, screenProps }) => ({
   )
 })
 
-export default InformationScreen
+// Map the relevant store state to the information screen component
+const mapStateToProps = (state) => {
+  return {
+    searchInput: getSearch(state)
+  }
+}
+
+// Map actions to event handler props on the information screen component
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InformationScreen)
