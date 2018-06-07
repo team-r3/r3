@@ -2,24 +2,28 @@
     {
       "key"     :  0,
       "category": "Paper",
+      "color"   : "#01ADDC",
       "do"      : ["Newspapers and magazines", "Beverage packages", "Flat cartons", "Wrapping paper", "Paper bags (clean)", "Writing paper"],
       "dont"    : ["Papers and cartons contaminated with other materials", "Napkins", "Stickers", "Photographs", "Clips and staples", "Packs of tobacco"]
     },
     {
       "key"     :  1,
       "category": "Plastic",
+      "color"   : "#FDDE13",
       "do"      : ["Cans of beverages", "Cans of preserves", "Aluminum trays", "Aluminum foil", "Empty aerosols"],
       "dont"    : ["Packaging contaminated with other materials", "Rubbers", "Leather", "Pots cutlery", "Caps", "Cookware", "Tools", "Household appliances", "Syringes and carpets"]
     },
     {
       "key"     :  2,
       "category": "Glass",
+      "color"   : "#8CC63E",
       "do"      : ["Bottles", "Jars", "Jars of glass"],
       "dont"    : ["Mirrors", "Lamps", "Glassware", "Automotive glass", "Ceramics", "Porcelain", "Bottle and acrylic lids"]
     },
     {
       "key"     :  3,
       "category": "Batteries",
+      "color"   : "#ED3024",
       "do"      : ["Used batteries of: used controls, lanterns, watches and batteries (cellphone, camera)"],
       "dont"    : ["Rechargeable batteries", "Car batteries", "Toy batteries", "Home appliances batteries"]
     }
