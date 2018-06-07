@@ -9,12 +9,38 @@ import mapSpots from './spots.json'
  * Map screen component
  */
 class MapScreen extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      latitude: null,
+      longitude: null,
+      error: null
+    }
+  }
+
+  componentDidMount () {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null
+        })
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    )
+  }
+
   render () {
     return (
       <MapView style={styleMap.map}
         region={{
-          latitude: 37.015589,
-          longitude: -7.933262,
+          // latitude: 37.015589,
+          // longitude: -7.933262,
+          latitude: this.state.latitude || 0.0,
+          longitude: this.state.longitude || 0.0,
           latitudeDelta: 0.03,
           longitudeDelta: 0.03
         }}
