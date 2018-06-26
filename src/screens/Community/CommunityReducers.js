@@ -122,6 +122,7 @@ export const getFilteredPosts = (state) => {
   const filter = getSearchInput(state).trim().toLowerCase()
   return getPosts(state).filter((post) => {
     return (
+      filter === '' ||
       post.text.toLowerCase().includes(filter) ||
       matchPersonName(post.user.toLowerCase(), filter)
     )

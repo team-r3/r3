@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { View, ScrollView } from 'react-native'
-import { Button, Text } from 'native-base'
+import { View, FlatList } from 'react-native'
+import { Container, Button, Fab, Text, ListItem, Icon, Left, Body, Right } from 'native-base'
 import { connect } from 'react-redux'
-import { ActionButton, ListItem } from 'react-native-material-ui'
 
 import { getFilteredPosts } from './CommunityReducers'
 import { getLogin } from '../Login/LoginReducers'
@@ -16,6 +15,13 @@ import examplePosts from './posts'
  * Community screen component
  */
 class CommunityScreen extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      active: false
+    }
+  }
+
   componentDidMount () {
     this.props.fetchData()
   }
@@ -23,50 +29,64 @@ class CommunityScreen extends Component {
   render () {
     const actions = [
       {
-        name: 'give-away', // Action name: 'give-away'
+        key: 'give-away',
         label: 'Give away',
-        icon: 'insert-emoticon' // TODO: change to 'heart'
+        icon: 'heart'
       },
       {
-        name: 'request', // Action name: 'request'
+        key: 'request',
         label: 'Make a request',
-        icon: 'chat-bubble' // TODO: change to 'basket'
+        icon: 'basket'
       }
     ]
 
-    const onAction = (action) => {
-      switch (action) {
-        case 'request':
-        case 'give-away':
-          this.props.navigation.navigate('CommunityPost', { type: action })
-          break
-      }
+    const onSelectAction = (actionKey) => {
+      this.props.navigation.navigate('CommunityPost', { type: actionKey })
+      this.setState({ active: false })
     }
 
     if (this.props.isLoggedIn) {
       return (
-        <View>
-          <ScrollView>
-            {this.props.posts.map((post, index) => {
-              return (
-                <ListItem
-                  divider
-                  leftElement={post.type === 'request' ? 'chat-bubble' : 'insert-emoticon'}
-                  // leftElement={post.type == 'request' ? 'basket' : 'heart'}
-                  centerElement={{
-                    primaryText: post.user,
-                    secondaryText: post.text
-                  }}
-                  key={post.key}
-                  onPress={() => {}}
-                  onPressValue={post.key}
-                  numberOfLines={'dynamic'}
-                />
-              )
-            })}
-          </ScrollView>
-          <ActionButton onPress={onAction} actions={actions} transition='speedDial' />
-        </View>
+        <Container>
+          <View style={{ flex: 1 }}>
+            <FlatList
+              data={this.props.posts}
+              renderItem={({item}) =>
+                <ListItem avatar>
+                  <Left>
+                    <Icon name={item.type === 'request' ? 'basket' : 'heart'} />
+                  </Left>
+                  <Body>
+                    <Text>{item.user}</Text>
+                    <Text note>{item.text}</Text>
+                  </Body>
+                  <Right>
+                    <Icon name='arrow-forward' />
+                  </Right>
+                </ListItem>
+              } />
+            <Fab
+              active={this.state.active}
+              direction='up'
+              containerStyle={{ }}
+              style={{ backgroundColor: '#0381ff' }}
+              position='bottomRight'
+              onPress={() => this.setState({ active: !this.state.active })}
+            >
+              <Icon name='add' />
+              {actions.map((action) =>
+                <Button
+                  style={{ backgroundColor: '#8a323f' }}
+                  key={action.key}
+                  onPress={() => onSelectAction(action.key)}
+                >
+                  {/* <Text note>{action.label}</Text> */}
+                  <Icon name={action.icon} />
+                </Button>
+              )}
+            </Fab>
+          </View>
+        </Container>
       )
     } else {
       return (
@@ -102,7 +122,6 @@ const mapStateToProps = (state) => {
   return {
     posts: getFilteredPosts(state),
     isLoggedIn: getLogin(state)
-
   }
 }
 

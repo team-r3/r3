@@ -1,48 +1,48 @@
 [
   {
-    "key" :  0,
+    "key" :  "0",
     "type": "request",
     "user": "José Lopes da Silva",
     "text": "Hi, I'm looking for wood pallets"
   },
   {
-    "key" :  1,
+    "key" :  "1",
     "type": "give",
     "user": "Ana Fonseca",
     "text": "I have an old desktop computer that I don't use anymore. I'm giving it to someone who make use of it, or a social institution."
   },
   {
-    "key" :  2,
+    "key" :  "2",
     "type": "request",
     "user": "António Meireles",
     "text": "I'm looking for glass containers, 0.5L to 1L in size."
   },
   {
-    "key" :  3,
+    "key" :  "3",
     "type": "request",
     "user": "Mary Jane",
     "text": "Looking for old bedroom furniture to use for 2 months."
   },
   {
-    "key" :  4,
+    "key" :  "4",
     "type": "give",
     "user": "João Gonçalves",
     "text": "10 boxes of old VHS tapes to donate. Good for plastic artist."
   },
   {
-    "key" :  5,
+    "key" :  "5",
     "type": "request",
     "user": "Carlos Nascimento",
     "text": "Looking for used bycicle tires."
   },
   {
-    "key" :  6,
+    "key" :  "6",
     "type": "request",
     "user": "José Carlos Fonseca",
     "text": "I'm looking for plastic bottle caps, which I can later exchange for a weel chair."
   },
   {
-    "key" :  8,
+    "key" :  "8",
     "type": "give",
     "user": "Maria Albertina",
     "text": "I'm giving away an old couch. It has some torn bits but it can be recovered with some work."

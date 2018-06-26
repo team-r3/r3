@@ -10,7 +10,8 @@ const isIphoneX =
   platform === "ios" && deviceHeight === 812 && deviceWidth === 375;
 
 // const mainColor = '#689f38';
-const mainColor  = "#7cb342";
+// const mainColor  = "#7cb342";
+const mainColor  = "#60ad3e";
 const lightColor = color(mainColor).lighten(0.66).hex();
 
 export default {
@@ -182,7 +183,7 @@ export default {
 
   // List
   listBg: "transparent",
-  listBorderColor: "#f4f4f4", //"#c9c9c9",
+  listBorderColor: "#c9c9c9",
   listDividerBg: "#f4f4f4",
   listBtnUnderlayColor: "#DDD",
   listItemPadding: platform === "ios" ? 10 : 12,
