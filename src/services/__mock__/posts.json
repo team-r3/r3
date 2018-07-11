@@ -1,0 +1,146 @@
+[
+  {
+    "id":     1,
+    "type":   "request",
+    "userId": 6,
+    "text":   "Hi, I'm looking for wooden pallets."
+  },
+  {
+    "id":     2,
+    "type":   "request",
+    "userId": 12,
+    "text":   "Bom dia, procuro rolhas de cortiça, para usar em trabalhos de artesanato."
+  },
+  {
+    "id":     3,
+    "type":   "give",
+    "userId": 11,
+    "text":   "Tenho um Nokia 3310 antigo para dar. A bateria está fraca, mas ainda dá para fazer algumas chamadas e aguenta 1 a 2 dias em stand-by."
+  },
+  {
+    "id":     4,
+    "type":   "give",
+    "userId": 3,
+    "text":   "I have an old desktop computer that I don't use anymore. I'm giving it away to someone who can make use of it, or to a social institution."
+  },
+  {
+    "id":     5,
+    "type":   "give",
+    "userId": 11,
+    "text":   "Estou a oferecer um jogo de loiça antigo, que já não uso há anos."
+  },
+  {
+    "id":     6,
+    "type":   "request",
+    "userId": 6,
+    "text":   "Hi, I'm looking for glass containers, 0.5L to 1L in size."
+  },
+  {
+    "id":     7,
+    "type":   "request",
+    "userId": 4,
+    "text":   "Procuro qualquer tipo de caixas de madeira."
+  },
+  {
+    "id":     8,
+    "type":   "request",
+    "userId": 5,
+    "text":   "Looking for old bedroom furniture to use for 2 months."
+  },
+  {
+    "id":     9,
+    "type":   "request",
+    "userId": 12,
+    "text":   "Olá. Estou à procura de cartões de papel higiénico (centro do rolo), assim como de caixas de cartão, para construir um brinquedo para gatos."
+  },
+  {
+    "id":     10,
+    "type":   "give",
+    "userId": 7,
+    "text":   "I have 10 boxes of old VHS tapes to donate. Good for plastic artist."
+  },
+  {
+    "id":     11,
+    "type":   "request",
+    "userId": 8,
+    "text":   "Looking for used bycicle tires."
+  },
+  {
+    "id":     12,
+    "type":   "request",
+    "userId": 9,
+    "text":   "I'm looking for plastic bottle caps, which I can later exchange for a weel chair."
+  },
+  {
+    "id":     13,
+    "type":   "request",
+    "userId": 12,
+    "text":   "Olá, estou à procura de roupas e tecidos usados de diversas cores, para usar em trabalhos de artesanado."
+  },
+  {
+    "id":     14,
+    "type":   "give",
+    "userId": 6,
+    "text":   "I'm giving away an old couch. It has some torn bits but can be recovered with some work."
+  },
+  {
+    "id":     15,
+    "type":   "give",
+    "userId": 11,
+    "text":   "Tenho cerca de dois sacos cheios de \"pauzinhos chineses\" em madeira usados para dar. Poderão talves servir para trabalhos manuais em vez de irem para o lixo."
+  },
+  {
+    "id":     16,
+    "type":   "give",
+    "userId": 12,
+    "text":   "Bom dia, tenho um colchão de cama velho para dar, com dimensões 140x190cm."
+  },
+  {
+    "id":     17,
+    "type":   "request",
+    "userId": 5,
+    "text":   "Hi, I'm looking for any type of boxes, jars or containers that could be used to store dry foods such as rice, beans, nuts, and the like."
+  },
+  {
+    "id":     18,
+    "type":   "give",
+    "userId": 6,
+    "text":   "I'm giving away an old CRT PC monitor, with 17 inch screen."
+  },
+  {
+    "id":     19,
+    "type":   "request",
+    "userId": 2,
+    "text":   "Bom dia. Procuro azulejos antigos, com padrões e/ou desenhos tradicionais."
+  },
+  {
+    "id":     20,
+    "type":   "request",
+    "userId": 10,
+    "text":   "Olá, estou à procura de cortinados antigos, com estilo vintage."
+  },
+  {
+    "id":     21,
+    "type":   "request",
+    "userId": 12,
+    "text":   "Bom dia, procuro latas de conserva de formas e dimensões variadas, para usar num projecto artístico."
+  },
+  {
+    "id":     22,
+    "type":   "give",
+    "userId": 9,
+    "text":   "I'm giving away a collection of over 30 empty miniature liquor bottles, from different brands."
+  },
+  {
+    "id":     23,
+    "type":   "give",
+    "userId": 14,
+    "text":   "Tengo una estufa vieja que ya no uso, para dar a quien pueda ser útil."
+  },
+  {
+    "id":     24,
+    "type":   "request",
+    "userId": 14,
+    "text":   "Buen día. Estoy buscando vasos de tamaño mediano, para pequeños árboles de jardín."
+  }
+]

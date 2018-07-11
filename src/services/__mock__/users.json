@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "admin",
+    "firstName": "Administrador",
+    "lastName": ""
+  },
+  {
+    "id": 2,
+    "username": "jlopesdasilva",
+    "password": "admin",
+    "firstName": "José",
+    "lastName": "Lopes da Silva"
+  },
+  {
+    "id": 3,
+    "username": "afonseca",
+    "password": "admin",
+    "firstName": "Ana",
+    "lastName": "Fonseca"
+  },
+  {
+    "id": 4,
+    "username": "ameireles",
+    "password": "admin",
+    "firstName": "António",
+    "lastName": "Meireles"
+  },
+  {
+    "id": 5,
+    "username": "mjdoe",
+    "password": "admin",
+    "firstName": "Mary Jane",
+    "lastName": "Doe"
+  },
+  {
+    "id": 6,
+    "username": "jsmith",
+    "password": "admin",
+    "firstName": "John",
+    "lastName": "Smith"
+  },
+  {
+    "id": 7,
+    "username": "jgoncalves",
+    "password": "admin",
+    "firstName": "João",
+    "lastName": "Gonçalves"
+  },
+  {
+    "id": 8,
+    "username": "cnascimento",
+    "password": "admin",
+    "firstName": "Carlos",
+    "lastName": "Nascimento"
+  },
+  {
+    "id": 9,
+    "username": "jcfonseca",
+    "password": "admin",
+    "firstName": "José Carlos",
+    "lastName": "Fonseca"
+  },
+  {
+    "id": 10,
+    "username": "msilva",
+    "password": "admin",
+    "firstName": "Maria Albertina",
+    "lastName": "Silva"
+  },
+  {
+    "id": 11,
+    "username": "asantos",
+    "password": "admin",
+    "firstName": "Amílcar",
+    "lastName": "Santos"
+  },
+  {
+    "id": 12,
+    "username": "jmeireles",
+    "password": "admin",
+    "firstName": "Joana",
+    "lastName": "Meireles"
+  },
+  {
+    "id": 13,
+    "username": "fdeschamps",
+    "password": "admin",
+    "firstName": "Françoise",
+    "lastName": "Deschamps"
+  },
+  {
+    "id": 14,
+    "username": "martinf",
+    "password": "admin",
+    "firstName": "Martín",
+    "lastName": "de Fonollosa"
+  }
+]
