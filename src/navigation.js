@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabNavigator, StackNavigator } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
 
 import Navigator from './components/Navigator'
 import MapScreen from './screens/Map/MapScreen'
@@ -11,21 +11,21 @@ import LoginScreen from './screens/Login/LoginScreen'
 /**
  * Navigation stacks for the main screens
  */
-const MapStack = StackNavigator({
+const MapStack = createStackNavigator({
   Index: { screen: MapScreen }
 })
-const CommunityStack = StackNavigator({
+const CommunityStack = createStackNavigator({
   Index: { screen: CommunityScreen },
   CommunityPost: { screen: CommunityPostScreen }
 })
-const InformationStack = StackNavigator({
+const InformationStack = createStackNavigator({
   Index: { screen: InformationScreen }
 })
 
 /**
  * Main navigation component
  */
-const MainNavigation = TabNavigator({
+const MainNavigation = createBottomTabNavigator({
   Map: { screen: MapStack },
   Community: { screen: CommunityStack },
   Information: { screen: InformationStack }
@@ -41,7 +41,7 @@ const MainNavigation = TabNavigator({
   }
 })
 
-const RootStack = StackNavigator(
+const RootStack = createStackNavigator(
   {
     Main: {
       screen: MainNavigation
@@ -56,4 +56,4 @@ const RootStack = StackNavigator(
   }
 )
 
-export default RootStack
+export default createAppContainer(RootStack)

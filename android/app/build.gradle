@@ -78,12 +78,6 @@ project.ext.react = [
 
 apply from: "../../node_modules/react-native/react.gradle"
 
-
-// project.ext.vectoricons = [
-//     iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ]             // font filenames
-// ]
-
-// apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -105,8 +99,8 @@ android {
 
     defaultConfig {
         applicationId "com.r3"
-        minSdkVersion 16
-        targetSdkVersion 22
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         ndk {
@@ -143,16 +137,17 @@ android {
 }
 
 dependencies {
+  implementation(project(':react-native-gesture-handler'))
   implementation(project(':react-native-vector-icons'))
   implementation fileTree(dir: "libs", include: ["*.jar"])
-  implementation "com.android.support:appcompat-v7:23.0.1"
-  implementation "com.facebook.react:react-native:+"
+  implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+  implementation "com.facebook.react:react-native:+"  // From node_modules
   implementation(project(':react-native-maps')){
     exclude group: 'com.google.android.gms', module: 'play-services-base'
     exclude group: 'com.google.android.gms', module: 'play-services-maps'
   }
-  implementation 'com.google.android.gms:play-services-base:10.2.4'
-  implementation 'com.google.android.gms:play-services-maps:10.2.4'
+  implementation 'com.google.android.gms:play-services-base:+'
+  implementation 'com.google.android.gms:play-services-maps:+'
 }
 
 // Run this once to be able to run the application with BUCK
